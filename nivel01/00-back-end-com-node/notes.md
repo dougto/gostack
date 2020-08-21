@@ -1,4 +1,4 @@
-HTTP codes:
+## HTTP codes
 
 1xx: informational
 2xx: success
@@ -6,7 +6,8 @@ HTTP codes:
 4xx: client error
 5xx: server error
 
-node express:
+## node express
+
 query params - req.query
 route params - req.params
 body - req.body
