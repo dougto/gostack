@@ -1,4 +1,6 @@
 const express = require('express');
+const cors = require('cors');
+
 const { uuid, isUuid } = require('uuidv4');
 
 const app = express();
@@ -25,12 +27,13 @@ function validateProjectId(req, res, next) {
   return next();
 }
 
+app.use(cors());
 app.use(logRequests);
 app.use(express.json());
 app.use('/projects/:id', validateProjectId);
 
 app.get('/projects', (req, res) => {
-  const { title } = request.query
+  const { title } = req.query
 
   const results = title ? projects.filter(project => project.title.includes(title)) : projects;
 
