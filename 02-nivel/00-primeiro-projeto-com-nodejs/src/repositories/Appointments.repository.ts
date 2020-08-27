@@ -17,10 +17,11 @@ class AppointmentsRepository {
     return this.appointments;
   }
 
-  public findByDate(date: Date): Appointment|null {
-    return this.appointments.find(appointment =>
-      isEqual(date, appointment.date)
-    ) || null;
+  public findByDate(date: Date): Appointment | null {
+    return (
+      this.appointments.find(appointment => isEqual(date, appointment.date)) ||
+      null
+    );
   }
 
   public create({ provider, date }: CreateAppointmentDTO): Appointment {
