@@ -16,7 +16,7 @@ Guia para instalar docker: https://www.notion.so/Instalando-Docker-6290d9994b0b4
 
 Comando para checar se uma porta será sendo usada: `lsof -i :5432`.
 
-Comando para iniciar um container a partir de uma imagem (seleceionada pela flag -d): `docker run --name nome-do-container -e variavel-de-ambiente=valor -p PORT:PORT -d imagem`.
+Comando para iniciar um container a partir de uma imagem (seleceionada pela flag -d): `docker run --name nome-do-container -e variavel-de-ambiente=valor -p PORT:PORT -d imagem`. No bootcamp usamos `docker run --name gostack_desafio06 -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres` para criar um container do banco postgres.
 
 Comando para mostrar containers ativos: `docker ps`. Para mostrar todos containers: `docker ps -a`.
 
