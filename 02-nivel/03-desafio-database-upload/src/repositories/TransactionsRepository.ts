@@ -11,14 +11,13 @@ interface Balance {
 @EntityRepository(Transaction)
 class TransactionsRepository extends Repository<Transaction> {
   public async getBalance(): Promise<Balance> {
-    const transactions = Transaction.find();
-    // TODO
-    /*
-    let income = 0,
-      outcome = 0;
+    const transactions = await this.find();
 
-    this.transactions.map(transaction => {
-      if (transaction.type == 'income') {
+    let income = 0;
+    let outcome = 0;
+
+    transactions.forEach(transaction => {
+      if (transaction.type === 'income') {
         income += transaction.value;
       } else {
         outcome += transaction.value;
@@ -30,7 +29,6 @@ class TransactionsRepository extends Repository<Transaction> {
       outcome,
       total: income - outcome,
     };
-    */
   }
 }
 
