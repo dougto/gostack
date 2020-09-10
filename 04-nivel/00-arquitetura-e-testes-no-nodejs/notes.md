@@ -10,6 +10,20 @@ DDD: Domain Driven Design. É uma metodologia
 
 TDD: Test Driven Development. É uma metodologia onde os testes são escritos antes da aplicação.
 
+Testes automatizados podem ser divididos em três tipos:
+
+### Testes unitários
+
+Testam funcionalidades específicas da nossa aplicação. Precisam ser funções puras.
+
+### Testes de integração
+
+Testam uma funcionalidade completa, passando por várias camadas da aplicação.
+
+### Testes end to end
+
+Testes que simulam a ação do usuário dentro da nossa aplicação.
+
 ## Injeção de dependencias
 
 Passos:

@@ -10,7 +10,8 @@ export default {
     expiresIn: '7d',
   },
   upload: {
-    directory: tmpFolder,
+    tmpFolder,
+    uploadsFolder: path.resolve(tmpFolder, 'uploads'),
     storage: multer.diskStorage({
       destination: tmpFolder,
       filename(request, file, callback) {
