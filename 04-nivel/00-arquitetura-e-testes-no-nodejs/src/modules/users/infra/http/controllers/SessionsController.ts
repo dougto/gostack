@@ -5,17 +5,20 @@ import CreateSessionsService from '@modules/users/services/CreateSessionsService
 
 export default class SessionsController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { email, password } = request.body;
+    const { email: reqemail, password } = request.body;
 
     const createSessionService = container.resolve(CreateSessionsService);
 
     const { user, token } = await createSessionService.execute({
-      email,
+      email: reqemail,
       password,
     });
 
-    delete user.password;
+    const { avatar, created_at, updated_at, email, id, name } = user;
 
-    return response.json({ user, token });
+    return response.json({
+      user: { avatar, created_at, updated_at, email, id, name },
+      token,
+    });
   }
 }

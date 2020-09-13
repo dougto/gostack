@@ -5,14 +5,20 @@ import CreateUserService from '@modules/users/services/CreateUserService';
 
 export default class UsersController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { name, email, password } = request.body;
+    const { name: reqname, email: reqemail, password } = request.body;
 
     const createUserService = container.resolve(CreateUserService);
 
-    const user = await createUserService.execute({ name, email, password });
+    const user = await createUserService.execute({
+      name: reqname,
+      email: reqemail,
+      password,
+    });
 
-    delete user.password;
+    const { avatar, created_at, updated_at, email, id, name } = user;
 
-    return response.status(201).json({ user });
+    return response
+      .status(201)
+      .json({ user: { avatar, created_at, updated_at, email, id, name } });
   }
 }

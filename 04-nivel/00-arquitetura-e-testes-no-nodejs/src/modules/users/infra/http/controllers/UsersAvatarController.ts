@@ -12,8 +12,8 @@ export default class UsersAvatarController {
       avatarFilename: request.file.filename,
     });
 
-    delete user.password;
+    const { avatar, created_at, updated_at, email, id, name } = user;
 
-    return response.json(user);
+    return response.json({ avatar, created_at, updated_at, email, id, name });
   }
 }
