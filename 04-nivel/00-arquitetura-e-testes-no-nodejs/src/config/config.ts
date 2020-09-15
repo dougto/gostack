@@ -6,7 +6,7 @@ const tmpFolder = path.resolve(__dirname, '..', '..', 'tmp');
 
 export default {
   jwt: {
-    secret: '8a38d7a8833de949e8c1dd5ab0be5e6b',
+    secret: process.env.APP_SECRET || 'dev',
     expiresIn: '7d',
   },
   upload: {
