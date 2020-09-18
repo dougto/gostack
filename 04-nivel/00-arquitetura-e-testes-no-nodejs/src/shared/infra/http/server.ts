@@ -8,16 +8,18 @@ import { errors } from 'celebrate';
 import 'express-async-errors';
 
 import routes from '@shared/infra/http/routes';
+import rateLimiter from '@shared/infra/http/middlewares/RateLimiter';
 import '@shared/infra/typeorm';
 import '@shared/container';
-import config from '@config/config';
+import { upload } from '@config/config';
 import AppError from '@shared/errors/AppError';
 
 const app = express();
 
 app.use(cors());
+app.use(rateLimiter);
 app.use(express.json());
-app.use('files', express.static(config.upload.uploadsFolder));
+app.use('files', express.static(upload.uploadsFolder));
 app.use(routes);
 
 app.use(errors);

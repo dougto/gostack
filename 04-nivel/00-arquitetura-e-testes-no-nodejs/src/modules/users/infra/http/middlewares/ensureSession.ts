@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
-import config from '@config/config';
+import { jwt } from '@config/config';
 import AppError from '@shared/errors/AppError';
 
 interface TokenPayload {
@@ -23,7 +23,7 @@ export default function ensureSession(
   const [, token] = authHeader.split(' ');
 
   try {
-    const decoded = verify(token, config.jwt.secret);
+    const decoded = verify(token, jwt.secret);
 
     const { sub } = decoded as TokenPayload;
 

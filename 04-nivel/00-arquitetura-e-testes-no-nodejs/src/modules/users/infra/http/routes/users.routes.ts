@@ -6,14 +6,14 @@ import UsersController from '@modules/users/infra/http/controllers/UsersControll
 import UsersAvatarController from '@modules/users/infra/http/controllers/UsersAvatarController';
 
 import ensureSession from '@modules/users/infra/http/middlewares/ensureSession';
-import config from '@config/config';
+import { upload } from '@config/config';
 
 const usersRouter = Router();
 
 const usersController = new UsersController();
 const usersAvatarController = new UsersAvatarController();
 
-const upload = multer(config.upload);
+const uploadConfig = multer(upload);
 
 usersRouter.post(
   '/',
@@ -30,7 +30,7 @@ usersRouter.post(
 usersRouter.patch(
   '/avatar',
   ensureSession,
-  upload.single('avatar'),
+  uploadConfig.single('avatar'),
   usersAvatarController.update,
 );
 

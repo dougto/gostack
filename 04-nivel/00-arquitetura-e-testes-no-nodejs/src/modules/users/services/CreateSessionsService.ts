@@ -3,7 +3,7 @@ import { injectable, inject } from 'tsyringe';
 
 import IHashProvider from '@modules/users/providers/HashProvider/models/IHashProvider';
 import User from '@modules/users/infra/typeorm/entities/User';
-import config from '@config/config';
+import { jwt } from '@config/config';
 import AppError from '@shared/errors/AppError';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 
@@ -41,9 +41,9 @@ class CreateSessionsService {
       throw new AppError('User not found', 401);
     }
 
-    const token = sign({}, config.jwt.secret, {
+    const token = sign({}, jwt.secret, {
       subject: user.id,
-      expiresIn: config.jwt.expiresIn,
+      expiresIn: jwt.expiresIn,
     });
 
     return { user, token };
