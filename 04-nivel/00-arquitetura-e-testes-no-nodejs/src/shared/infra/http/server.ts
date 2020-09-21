@@ -17,9 +17,9 @@ import AppError from '@shared/errors/AppError';
 const app = express();
 
 app.use(cors());
+app.use('/files', express.static(upload.uploadsFolder));
 app.use(rateLimiter);
 app.use(express.json());
-app.use('files', express.static(upload.uploadsFolder));
 app.use(routes);
 
 app.use(errors);

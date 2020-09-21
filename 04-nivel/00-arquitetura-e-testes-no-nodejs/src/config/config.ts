@@ -33,7 +33,7 @@ export const jwt = {
 };
 
 export const upload = {
-  driver: process.env.STORAGE_DRIVER === 'disk' ? 'disk' : 's3',
+  driver: 'disk',
   tmpFolder,
   uploadsFolder: path.resolve(tmpFolder, 'uploads'),
   storage: multer.diskStorage({

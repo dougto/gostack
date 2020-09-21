@@ -34,7 +34,7 @@ class SendResetPasswordEmailService {
       __dirname,
       '..',
       'views',
-      'forgot_password.hbs',
+      'reset_password.hbs',
     );
 
     await this.emailProvider.sendEmail({
@@ -47,7 +47,7 @@ class SendResetPasswordEmailService {
         template: forgotPasswordTemplate,
         variables: {
           name: user.name,
-          link: `${process.env.APP_WEB_URL}/reset-pw?token=${token}`,
+          link: `${process.env.APP_WEB_URL}/reset-password?token=${token}`,
         },
       },
     });

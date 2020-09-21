@@ -43,7 +43,9 @@ class CreateAppointmentService {
       throw new AppError('Can only create appointments between 8am and 5pm');
     }
 
-    if (await this.appointmentsRepository.findByDate(appointmentDate)) {
+    if (
+      await this.appointmentsRepository.findByDate(appointmentDate, provider_id)
+    ) {
       throw new AppError("This time isn't available.", 400);
     }
 
